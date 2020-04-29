@@ -1,0 +1,134 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+        <meta charset="utf-8"/>
+
+  <title>True Randomiser</title>
+
+  <style>
+        body {background-color: powderblue; font-size: 30px;}
+        h1   {color: blue;}
+        p    {color: black;}
+        </style>
+
+  <script>
+
+
+        function shuffle(array) {
+          var currentIndex = array.length, temporaryValue, randomIndex;
+        
+          // While there remain elements to shuffle...
+          while (0 !== currentIndex) {
+        
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+        
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+          }
+        
+          return array;
+        }
+        
+
+        function run()
+        {
+            var required = [];
+            var cbs = document.forms['players'].elements['required'];
+            for(var i=0,cbLen=cbs.length;i<cbLen;i++){
+            if(cbs[i].checked){
+                required.push(cbs[i].value);
+            } 
+            }
+        
+            var optional = [];
+            var cbs = document.forms['players'].elements['optional'];
+            for(var i=0,cbLen=cbs.length;i<cbLen;i++){
+            if(cbs[i].checked){
+                optional.push(cbs[i].value);
+            } 
+            }
+        
+            required = shuffle(required)
+            optional = shuffle(optional)
+        
+            playing = [];
+        
+            for (var i=0;i<Math.min(required.length,4);i++)
+            {
+                playing.push(required[i]);
+            }
+        
+            var playersToFill = 4 - playing.length
+        
+            for (var i=0;i<playersToFill;i++)
+            {
+                playing.push(optional[i])
+            }
+
+            playing = shuffle(playing)
+        
+            document.getElementById("output").innerHTML = "";
+
+            for (var i=0;i<4;i++)
+            {
+                team = Math.floor(i/2) + 1;
+                document.getElementById("output").innerHTML += "Team " + team + ": " + playing[i] + "<br />";
+            }
+        }
+        
+        </script>
+
+
+
+</head>
+
+<body>
+
+
+<div>
+
+<form name="players">
+    Required:<br />
+    Dan <input type="checkbox" name="required" value="Dan"/> <br />
+    Alex <input type="checkbox" name="required" value="Alex"/> <br />
+    Qasim <input type="checkbox" name="required" value="Qasim"/> <br />
+    Katie <input type="checkbox" name="required" value="Katie"/> <br />
+    Tom <input type="checkbox" name="required" value="Tom"/><br />
+    EBG <input type="checkbox" name="required" value="EBG"/><br />
+    Polly <input type="checkbox" name="required" value="Polly"/><br />
+    Lozza <input type="checkbox" name="required" value="Lozza"/><br />
+    Georgia <input type="checkbox" name="required" value="Georgia"/><br />
+    Sian <input type="checkbox" name="required" value="Sian"/><br />
+    Guest <input type="checkbox" name="required" value="Guest"/><br />
+    <br />Optional:<br />
+    Dan <input type="checkbox" name="optional" value="Dan"/> <br />
+    Alex <input type="checkbox" name="optional" value="Alex"/> <br />
+    Qasim <input type="checkbox" name="optional" value="Qasim"/> <br />
+    Katie <input type="checkbox" name="optional" value="Katie"/> <br />
+    Tom <input type="checkbox" name="optional" value="Tom"/><br />
+    EBG <input type="checkbox" name="optional" value="EBG"/><br />
+    Polly <input type="checkbox" name="optional" value="Polly"/><br />
+    Lozza <input type="checkbox" name="optional" value="Lozza"/><br />
+    Georgia <input type="checkbox" name="optional" value="Georgia"/><br />
+    Sian <input type="checkbox" name="optional" value="Sian"/><br />
+    Guest <input type="checkbox" name="optional" value="Guest"/><br />
+</form>
+
+
+</div>
+<br />
+<button onclick="run()">Submit</button>
+
+<p id = "output">
+
+</p>
+
+
+
+</body>
+</html>
