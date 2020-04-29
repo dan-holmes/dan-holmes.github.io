@@ -1,0 +1,38 @@
+body {
+    background-color: black;
+}
+#container{
+   position: absolute;
+   top: 50%;
+   margin-top: -200px;/* half of #content height*/
+   left: 0;
+   width: 100%;
+}
+#content {
+   width: 624px;
+   margin-left: auto;
+   margin-right: auto;
+   height: 395px;
+}
+h1 {
+    color: white;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 190%;
+}
+a {
+	color: white;
+	text-decoration: none;
+}
+#email, #facebook, #linkedin {
+	color: white;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+}
+#email1, #linkedin {
+	padding: 16px 0px;
+}
+
+#email2 {
+	padding: 14px 0px
+}
