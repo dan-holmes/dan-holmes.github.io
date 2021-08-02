@@ -1,0 +1,15 @@
+body {
+    background-color: black;
+}
+
+a:link, a:visited, a:hover, a:active {
+    color: green;
+}
+
+main {
+    padding-top: 20px;
+    width: 800px;
+    margin: auto;
+    font-family: 'Courier New', Courier, monospace;
+    color: green;
+}
