@@ -1,15 +1,80 @@
+$background-color: #D9F7FA;
+$main-panel-color: #CFCBCA;
+$text-color: #8C271E;
+
+@mixin main-content-panel {
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: $main-panel-color;
+    margin-bottom: 10px;
+    box-shadow: 5px 5px 3px;
+}
+
 body {
-    background-color: black;
-}
+    background-color: $background-color;
 
-a:link, a:visited, a:hover, a:active {
-    color: green;
-}
+    color: $text-color;
 
-main {
-    padding-top: 20px;
-    width: 800px;
-    margin: auto;
-    font-family: 'Courier New', Courier, monospace;
-    color: green;
+    a:link, a:visited, a:hover, a:active {
+        color: $text-color;
+    }
+
+    nav {
+        padding: 10px;
+        margin: 10px;
+        background-color: $main-panel-color;
+        border-style: solid;
+        border-width: 3px;
+        border-color: $text-color;
+
+        li {
+            display: inline;
+            border-style: solid;
+            border-width: 2px;
+            border-color: $text-color;
+            padding: 10px;
+            margin: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            a:link {
+                text-decoration: none;
+            }
+        }
+    }
+
+    main {
+        width: 800px;
+        margin: auto;
+
+        header {
+            @include main-content-panel();
+            margin-top: 15px;
+            margin-bottom: 15px;
+            font-weight: bold;
+    
+            h1 {
+                text-align: center;
+            }
+    
+            #face {
+                width: 30%;
+                display: block;
+                margin: auto;
+            }
+    
+            p {
+                padding: 10px;
+            }
+        }
+
+        section {
+            @include main-content-panel();
+            
+            &:hover {
+                background-color: darken($main-panel-color, 10%);
+                transition-property: background-color;
+                transition-duration: 1s;
+            }
+        }
+    }
 }
